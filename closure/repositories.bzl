@@ -233,9 +233,9 @@ def closure_library():
   # closure_library.BUILD.
   native.new_http_archive(
       name = "closure_library",
-      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/closure-library/archive/v20161024.tar.gz",
-      sha256 = "9dc8bc37e1f882fe90fe09807f6710ddb52eeae2d51755c92564c8b91000cf97",
-      strip_prefix = "closure-library-20161024",
+      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/closure-library/archive/v20170124.tar.gz",
+      sha256 = "2bd046004e741283641f761ab0a2c7caf4a457db4b3b81bd3299eeca609c11a2",
+      strip_prefix = "closure-library-20170124",
       build_file = str(Label("//closure/library:closure_library.BUILD")),
   )
 
