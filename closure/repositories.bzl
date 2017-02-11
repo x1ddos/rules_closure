@@ -29,6 +29,7 @@ def closure_repositories(
     omit_closure_compiler=False,
     omit_closure_library=False,
     omit_closure_stylesheets=False,
+    omit_errorprone=False,
     omit_fonts_noto_hinted_deb=False,
     omit_fonts_noto_mono_deb=False,
     omit_gson=False,
@@ -75,6 +76,8 @@ def closure_repositories(
     closure_library()
   if not omit_closure_stylesheets:
     closure_stylesheets()
+  if not omit_errorprone:
+    errorprone()
   if not omit_fonts_noto_hinted_deb:
     fonts_noto_hinted_deb()
   if not omit_fonts_noto_mono_deb:
@@ -222,8 +225,8 @@ def clang():
 def closure_compiler():
   native.maven_jar(
       name = "closure_compiler",
-      artifact = "com.google.javascript:closure-compiler-unshaded:v20161024",
-      sha1 = "e83bb23f316b56715e5d852cc81cae0a57c22c0b",
+      artifact = "com.google.javascript:closure-compiler-unshaded:v20170124",
+      sha1 = "e6ac8a24b82d052f6a2ad7988ec326f2303100e6",
       server = "closure_maven_server",
   )
 
@@ -253,6 +256,14 @@ def closure_stylesheets():
       server = "closure_maven_server",
   )
 
+def errorprone():
+  native.maven_jar(
+      name = "errorprone",
+      artifact = "com.google.errorprone:error_prone_annotations:2.0.15",
+      sha1 = "822652ed7196d119b35d2e22eb9cd4ffda11e640",
+      server = "closure_maven_server",
+  )
+
 def fonts_noto_hinted_deb():
   native.http_file(
       name = "fonts_noto_hinted_deb",
@@ -278,32 +289,32 @@ def gson():
 def guava():
   native.maven_jar(
       name = "guava",
-      artifact = "com.google.guava:guava:19.0",
-      sha1 = "6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9",
+      artifact = "com.google.guava:guava:20.0",
+      sha1 = "89507701249388e1ed5ddcf8c41f4ce1be7831ef",
       server = "closure_maven_server",
   )
 
 def guice():
   native.maven_jar(
       name = "guice",
-      artifact = "com.google.inject:guice:3.0",
-      sha1 = "9d84f15fe35e2c716a02979fb62f50a29f38aefa",
+      artifact = "com.google.inject:guice:4.1.0",
+      sha1 = "eeb69005da379a10071aa4948c48d89250febb07",
       server = "closure_maven_server",
   )
 
 def guice_assistedinject():
   native.maven_jar(
       name = "guice_assistedinject",
-      artifact = "com.google.inject.extensions:guice-assistedinject:3.0",
-      sha1 = "544449ddb19f088dcde44f055d30a08835a954a7",
+      artifact = "com.google.inject.extensions:guice-assistedinject:4.1.0",
+      sha1 = "af799dd7e23e6fe8c988da12314582072b07edcb",
       server = "closure_maven_server",
   )
 
 def guice_multibindings():
   native.maven_jar(
       name = "guice_multibindings",
-      artifact = "com.google.inject.extensions:guice-multibindings:3.0",
-      sha1 = "5e670615a927571234df68a8b1fe1a16272be555",
+      artifact = "com.google.inject.extensions:guice-multibindings:4.1.0",
+      sha1 = "3b27257997ac51b0f8d19676f1ea170427e86d51",
       server = "closure_maven_server",
   )
 
@@ -322,8 +333,8 @@ def incremental_dom():
   # https://github.com/google/incremental-dom/blob/master/gulpfile.js
   native.http_file(
       name = "incremental_dom",
-      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/incremental-dom/archive/0.5.0.tar.gz",
-      sha256 = "bb268af74c411c84372fb9926021859f1ebdbeff86d4ec3e8865758f10482fda",
+      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/incremental-dom/archive/0.5.2.tar.gz",
+      sha256 = "554a778dff5cba561a98619b2f3de5061848744644c870f718e2cdcf9bf0dccf",
   )
 
 def json():
@@ -436,16 +447,16 @@ def safe_html_types_html_proto():
 def soy():
   native.maven_jar(
       name = "soy",
-      artifact = "com.google.template:soy:2016-08-25",
-      sha1 = "bb2a8a8b08f0668abc80e5b25eaffca000cecf57",
+      artifact = "com.google.template:soy:2017-02-01",
+      sha1 = "8638940b207779fe3b75e55b6e65abbefb6af678",
       server = "closure_maven_server",
   )
 
 def soy_jssrc():
   native.new_http_archive(
       name = "soy_jssrc",
-      sha256 = "15f5bf0b8ca40211a29bcd6486bd3198155ecc76e8bbf06407deb695ca848be6",
-      url = "http://bazel-mirror.storage.googleapis.com/repo1.maven.org/maven2/com/google/template/soy/2016-08-25/soy-2016-08-25-jssrc_js.jar",
+      sha256 = "ed0be8195f5a05eea82099d234dab074ca80d7c1f2e54928e0fb2ee0a7ba666d",
+      url = "http://bazel-mirror.storage.googleapis.com/repo1.maven.org/maven2/com/google/template/soy/2017-02-01/soy-2017-02-01-jssrc_js.jar",
       build_file = str(Label("//closure/templates:soy_jssrc.BUILD")),
       type = "zip",
   )

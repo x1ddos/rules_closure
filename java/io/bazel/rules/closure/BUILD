@@ -26,7 +26,9 @@ java_binary(
         ":worker_protocol_proto",
         "//java/com/google/javascript/jscomp",
         "//java/io/bazel/rules/closure/program",
+        "@errorprone//jar",
         "@guava//jar",
+        "@jsr305//jar",
     ],
 )
 

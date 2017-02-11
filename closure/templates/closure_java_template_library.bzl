@@ -84,7 +84,9 @@ def closure_java_template_library(
       srcs = java_srcs or None,
       exports = [str(Label(_SOY_LIBRARY))],
       deps = [
+          '@errorprone//jar',
           '@guava//jar',
+          '@jsr305//jar',
           str(Label(_SOY_LIBRARY)),
       ] if java_srcs else None,  # b/13630760
       resources = srcs + extra_srcs,

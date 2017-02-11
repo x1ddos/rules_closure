@@ -31,11 +31,7 @@ closure_js_proto_library(
 
 closure_js_library(
     name = "soy_jssrc",
-    srcs = [
-        "@soy_jssrc//:jspbconversions.js",
-        "@soy_jssrc//:soydata_converters.js",
-        "@soy_jssrc//:soyutils_usegoog.js",
-    ],
+    srcs = ["@soy_jssrc//:com_google_template_soy_jssrc"],
     suppress = ["JSC_OPTIONAL_PARAM_NOT_MARKED_OPTIONAL"],
     deps = [
         ":soy_html_proto",
@@ -43,11 +39,23 @@ closure_js_library(
     ],
 )
 
+closure_js_library(
+    name = "soy_jssrc_idom",
+    srcs = ["@soy_jssrc//:idom"],
+    deps = [
+        ":soy_jssrc",
+        "//closure/library",
+        "//third_party/javascript/incremental_dom",
+    ],
+)
+
 java_library(
     name = "safe_html_types",
     exports = ["@safe_html_types//jar"],
     runtime_deps = [
+        "@errorprone//jar",
         "@guava//jar",
+        "@jsr305//jar",
         "@protobuf_java//jar",
     ],
 )

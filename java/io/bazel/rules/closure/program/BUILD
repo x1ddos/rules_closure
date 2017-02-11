@@ -16,5 +16,9 @@ java_library(
     name = "program",
     srcs = ["CommandLineProgram.java"],
     visibility = ["//visibility:public"],
-    deps = ["@guava//jar"],
+    deps = [
+        "@errorprone//jar",
+        "@guava//jar",
+        "@jsr305//jar",
+    ],
 )

@@ -31,7 +31,9 @@ java_library(
         "//java/io/bazel/rules/closure/program",
         "//third_party/java/jscomp",
         "@args4j//jar",  # for //third_party/java/jscomp
+        "@errorprone//jar",
         "@guava//jar",
+        "@jsr305//jar",
         "@protobuf_java//jar",
     ],
 )
