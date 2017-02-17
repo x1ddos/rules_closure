@@ -401,32 +401,32 @@ def phantomjs():
 def protobuf_java():
   native.maven_jar(
       name = "protobuf_java",
-      artifact = "com.google.protobuf:protobuf-java:3.1.0",
-      sha1 = "e13484d9da178399d32d2d27ee21a77cfb4b7873",
+      artifact = "com.google.protobuf:protobuf-java:3.2.0",
+      sha1 = "62ccf171a106ff6791507f2d5364c275f9a3131d",
       server = "closure_maven_server",
   )
 
 def protobuf_js():
   native.new_http_archive(
       name = "protobuf_js",
-      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/releases/download/v3.1.0/protobuf-js-3.1.0.zip",
-      sha256 = "b257641b1f151e91f2e159c26b015bd43c1b57fa8053e541dcd2dc9408e82a3e",
-      strip_prefix = "protobuf-3.1.0",
+      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/releases/download/v3.2.0/protobuf-js-3.2.0.zip",
+      sha256 = "6385372e081bfb89a904944af1fae02542fefa9db86709f08c86ac0ee14c5651",
+      strip_prefix = "protobuf-3.2.0",
       build_file = str(Label("//closure/protobuf:protobuf_js.BUILD")),
   )
 
 def protoc_linux_x86_64():
   native.http_file(
       name = "protoc_linux_x86_64",
-      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip",
-      sha256 = "7c98f9e8a3d77e49a072861b7a9b18ffb22c98e37d2a80650264661bfaad5b3a",
+      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip",
+      sha256 = "9cf9a8661d649b8477fe0ad32a8b28d351a170a62e210bf848d90a29f1f4df9d",
   )
 
 def protoc_macosx():
   native.http_file(
       name = "protoc_macosx",
-      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-osx-x86_64.zip",
-      sha256 = "2cea7b1acb86671362f7aa554a21b907d18de70b15ad1f68e72ad2b50502920e",
+      url = "http://bazel-mirror.storage.googleapis.com/github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-osx-x86_64.zip",
+      sha256 = "69fbd04599c53af7826f9a6cf2a34f15aec6e0800c24cd572f4f5ba9e156a2cb",
   )
 
 def safe_html_types():
